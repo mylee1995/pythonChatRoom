@@ -19,7 +19,7 @@ ADDR = (HOST, PORT)
 USERS = {}
 ADDRESSES = {}
 
-# General Header that helps
+# General Header
 HEADER = "Server listening on {} \n[*] Type 'help' to see a list of available server commands.".format(
     PORT)
 
