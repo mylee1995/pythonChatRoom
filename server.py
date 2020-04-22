@@ -103,7 +103,7 @@ def handle_client(client):
                     UserList += '   Client: \'{}\' ~ {} : {}\n'.format(
                         USERS[u], ADDRESSES[u][0], ADDRESSES[u][1])
                 client.send(
-                    "\n[*] List of users \n {}\n ".format(UserList).encode())
+                    "\n[*] List of users\n{}".format(UserList).encode())
             elif messageType == "<private>":
                 # Let the user know whether the private message was successfully sent
                 if privateMessage(client, fromClientJSON) == False:

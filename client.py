@@ -125,15 +125,17 @@ def send_msg():
         jdata = formatJSON('<first>', userName)
         userSocket.send(encodeJSON(jdata).encode())
         first = True
-    while True:
+    while first:
         try:
             # Choose the options
             cmd = input(
                 "[*] Choose msg options.\n[*] Type <help> to see the list of options\n")
+
             # <list> asks the server the list of active users to the server
             if cmd == '<list>':
                 jdata = formatJSON(cmd)
                 userSocket.send(encodeJSON(jdata).encode())
+
             # <private> allows to send private message to specific active user in the chatroom
             elif cmd == '<private>':
                 target = input("[*] Who do you want to send message to?\n")
@@ -141,21 +143,28 @@ def send_msg():
                 jdata = formatJSON(cmd, content)
                 jdata["target"] = target
                 userSocket.send(encodeJSON(jdata).encode())
-                # print('Private message to {} sent to server!'.format(target))
+
             # Provide user command options
             elif cmd == '<help>':
                 print(userCMD)
+
             # Asks the content of the announcement if user selects announce option
             elif cmd == '<announce>':
                 content = input(
                     "[*] Type message you want to announce to everyone\n")
                 jdata = formatJSON(cmd, content)
                 userSocket.send(encodeJSON(jdata).encode())
+
+            # Clear the screen
+            elif cmd == '<clear>':
+                clear()
+
             # If user wants to quit, let the server know and terminate the current thread.
             elif cmd == '<quit>':
                 jdata = formatJSON(cmd)
                 userSocket.send(encodeJSON(jdata).encode())
                 break
+
             # Let the user know that the cmd input did not meet any of the options
             else:
                 print(
