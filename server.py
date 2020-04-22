@@ -170,7 +170,6 @@ def server_cmds():
             print('[*] announce - announce a message to the chat room.')
             print('[*] clear - Clear the screen.')
             print('[*] help - Provides Help information for Server Commands.')
-            # print('[*] KICK - Kick a client from the server.')
             print('[*] list - Lists the current connections.')
             print('[*] quit - quits the chat room server')
 
